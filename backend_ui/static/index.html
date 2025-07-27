@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndiMorph Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div id="root"></div>
+  </div>
+  <script type="text/babel">
+    function App() {
+      const [angles, setAngles] = React.useState([90, 90, 90, 90]);
+      const [status, setStatus] = React.useState('idle');
+      const handleMorph = async () => {
+        const res = await fetch('/api/morph', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ angles })
+        });
+        const data = await res.json();
+        setStatus('morphing');
+      };
+      const handleReset = async () => {
+        await fetch('/api/reset', { method: 'POST' });
+        setAngles([90, 90, 90, 90]);
+        setStatus('reset');
+      };
+      const fetchStatus = async () => {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        setAngles(data.angles);
+        setStatus(data.status);
+      };
+      React.useEffect(() => { fetchStatus(); }, []);
+      return (
+        <div className="card p-4">
+          <h2>IndiMorph Control Panel</h2>
+          <div className="mb-3">
+            <label>Actuator Angles:</label>
+            {angles.map((a, i) => (
+              <input key={i} type="number" min="0" max="180" value={a}
+                onChange={e => {
+                  const newAngles = [...angles];
+                  newAngles[i] = parseInt(e.target.value);
+                  setAngles(newAngles);
+                }}
+                className="form-control d-inline w-auto mx-2" style={{width: '80px'}} />
+            ))}
+          </div>
+          <button className="btn btn-primary me-2" onClick={handleMorph}>Start Morph</button>
+          <button className="btn btn-secondary" onClick={handleReset}>Reset</button>
+          <div className="mt-3">
+            <span>Status: <b>{status}</b></span>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html> 

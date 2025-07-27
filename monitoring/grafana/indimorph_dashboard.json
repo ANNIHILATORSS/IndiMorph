@@ -1,0 +1,22 @@
+{
+  "dashboard": {
+    "title": "IndiMorph Monitoring",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Morph Requests",
+        "targets": [{"expr": "morph_requests_total", "legendFormat": "Morphs"}]
+      },
+      {
+        "type": "graph",
+        "title": "Reset Requests",
+        "targets": [{"expr": "reset_requests_total", "legendFormat": "Resets"}]
+      },
+      {
+        "type": "graph",
+        "title": "Status Requests",
+        "targets": [{"expr": "status_requests_total", "legendFormat": "Status"}]
+      }
+    ]
+  }
+} 

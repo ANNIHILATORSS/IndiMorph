@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend_ui
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - mqtt
+    networks:
+      - indimorph
+  digital_twin:
+    build: ./digital_twin
+    depends_on:
+      - mqtt
+    networks:
+      - indimorph
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
+    networks:
+      - indimorph
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - indimorph
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - indimorph
+networks:
+  indimorph:
+    driver: bridge 
