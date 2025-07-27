@@ -2,13 +2,15 @@
 
 **IndiMorph** is an indigenous, AI-powered, shape-shifting multi-modal mobility platform engineered for smart transportation, defense operations, and disaster response. By unifying advanced AI models, dynamic hardware control, real-time digital twin simulation, and edge deployment, IndiMorph achieves robust adaptability across complex terrains and mission-critical scenarios.
 
----
+
+<img src="Image/Recording%202025-07-28%20001606.gif" alt="IndiMorph Demo" width="600"/>
+
 
 ## Problem Statement
 
 Modern mobility platforms are often rigid and fail to adapt dynamically to unpredictable terrain or mission demands. **IndiMorph solves this by enabling vehicles to intelligently morph their shape and behavior in real-time**, guided by onboard sensors and AI inference pipelines. This allows for terrain-specific optimization, rapid response, and operational resilience.
 
----
+
 
 ## Key Features
 
@@ -20,7 +22,6 @@ Modern mobility platforms are often rigid and fail to adapt dynamically to unpre
 * **Telemetry & Health Monitoring:** Real-time logging with anomaly detection using LSTM models.
 * **Secure Remote Operation:** Flask/FastAPI backend with JWT auth, Prometheus metrics, and React-based UI dashboards.
 
----
 
 ## Tech Stack
 
@@ -31,7 +32,6 @@ Modern mobility platforms are often rigid and fail to adapt dynamically to unpre
 * **Frontend:** React, Bootstrap, HTML5, Plotly Dash
 * **DevOps & Cloud:** Docker Compose, GitHub Actions, Terraform (AWS/GCP/Azure), InfluxDB, S3/GCS/Azure Blob
 
----
 
 ## Folder Structure
 
