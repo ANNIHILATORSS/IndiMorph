@@ -3,7 +3,7 @@
 **IndiMorph** is an indigenous, AI-powered, shape-shifting multi-modal mobility platform engineered for smart transportation, defense operations, and disaster response. By unifying advanced AI models, dynamic hardware control, real-time digital twin simulation, and edge deployment, IndiMorph achieves robust adaptability across complex terrains and mission-critical scenarios.
 
 
-<img src="Image/Recording%202025-07-28%20001606.gif" alt="IndiMorph Demo" width="600"/>
+<img src="Image/Recording%202025-07-28%20001606.gif" alt="IndiMorph" />
 
 
 ## Problem Statement
