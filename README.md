@@ -1,81 +1,119 @@
 # IndiMorph
 
-IndiMorph is an AI-powered, shape-shifting multi-modal vehicle platform for smart transportation, defense, and disaster response. It combines advanced AI, real-time control, digital twin simulation, and edge deployment for robust, adaptive mobility in challenging environments.
+**IndiMorph** is an indigenous, AI-powered, shape-shifting multi-modal mobility platform engineered for smart transportation, defense operations, and disaster response. By unifying advanced AI models, dynamic hardware control, real-time digital twin simulation, and edge deployment, IndiMorph achieves robust adaptability across complex terrains and mission-critical scenarios.
+
+---
 
 ## Problem Statement
-Modern mobility systems struggle to adapt to rapidly changing terrains and mission requirements. IndiMorph addresses this by enabling vehicles to morph their shape and behavior in real time, guided by AI and sensor feedback, for optimal performance in diverse scenarios.
+
+Modern mobility platforms are often rigid and fail to adapt dynamically to unpredictable terrain or mission demands. **IndiMorph solves this by enabling vehicles to intelligently morph their shape and behavior in real-time**, guided by onboard sensors and AI inference pipelines. This allows for terrain-specific optimization, rapid response, and operational resilience.
+
+---
 
 ## Key Features
-- **AI-Driven Morphing:** Real-time terrain classification and morphing control using deep learning.
-- **Digital Twin:** Unity-based simulation and visualization of vehicle state, terrain, and sensor data.
-- **Edge AI:** Lightweight inference pipelines for Jetson Nano/Raspberry Pi.
-- **CFD Optimization:** Reinforcement learning-driven aerodynamic optimization with OpenFOAM.
-- **Modular Hardware Control:** Arduino/PlatformIO firmware for actuators and sensors.
-- **Robust Telemetry:** Real-time logging and health monitoring.
-- **Open APIs:** Flask/FastAPI backend for remote control and integration.
+
+* **AI-Driven Morphing:** Terrain-aware morph logic powered by TFLite/ONNX classifiers and pattern mapping.
+* **Digital Twin:** Real-time Unity-based visualization synchronized via MQTT and UDP bridges.
+* **Edge AI:** Lightweight terrain classification and actuator control pipelines optimized for Jetson Nano/Raspberry Pi.
+* **CFD Optimization:** Reinforcement Learning + OpenFOAM pipeline for aerodynamic and mission-specific design tuning.
+* **Modular Hardware Control:** Arduino-based actuation of Nitinol wires and pneumatics via serial command APIs.
+* **Telemetry & Health Monitoring:** Real-time logging with anomaly detection using LSTM models.
+* **Secure Remote Operation:** Flask/FastAPI backend with JWT auth, Prometheus metrics, and React-based UI dashboards.
+
+---
 
 ## Tech Stack
-- **AI/ML:** PyTorch, TensorFlow, TFLite, PyTorch Lightning, Stable Baselines3, EfficientNet, Diffusion Models
-- **Backend:** Flask, FastAPI, Gunicorn, MQTT, InfluxDB
-- **Edge:** OpenCV, TFLite, TensorRT, PySerial
-- **Simulation:** Unity3D, ML-Agents, OpenFOAM
-- **Frontend:** React, Bootstrap, Plotly Dash
-- **DevOps:** GitHub Actions, Docker, PlatformIO
+
+* **AI/ML:** PyTorch Lightning, TensorFlow/Keras, TFLite, ONNX, Stable Baselines3, EfficientNetV2, MobileNetV2
+* **Edge Runtime:** OpenCV, PySerial, TensorRT, Python threading
+* **Simulation & Twin:** Unity3D, ML-Agents, OpenFOAM, MQTT (Paho), UDP sockets
+* **Backend:** Flask, FastAPI, Gunicorn, Prometheus, Grafana, JWT
+* **Frontend:** React, Bootstrap, HTML5, Plotly Dash
+* **DevOps & Cloud:** Docker Compose, GitHub Actions, Terraform (AWS/GCP/Azure), InfluxDB, S3/GCS/Azure Blob
+
+---
 
 ## Folder Structure
-```
+
+```bash
 .
-├── ai_models/           # All ML/AI modules
-├── backend_ui/          # Flask/FastAPI backend and UI
-├── datasets/            # Training and runtime data
-├── digital_twin/        # Unity + MQTT digital twin
-├── docs/                # Diagrams and documentation
-├── edge_controller/     # Jetson/RPi runtime AI
-├── morphing_control/    # Hardware control logic
-├── scripts/             # Setup and utility scripts
-├── simulations/         # CFD and Unity simulation logs
-├── LICENSE
+├── ai_models/           # Terrain classifier, CAD generator, CFD optimizer
+├── backend_ui/          # Flask/FastAPI backend + React/HTML dashboards
+├── datasets/            # Terrain images, actuator logs, sensor traces
+├── digital_twin/        # Unity3D project + MQTT & UDP bridge
+├── docs/                # Technical documentation and diagrams
+├── edge_controller/     # Jetson/RPi runtime: inference, PID, logging
+├── morphing_control/    # Arduino firmware + Python serial bridge
+├── scripts/             # Utilities, cloud uploaders, simulation runners
+├── simulations/         # Batch runners for OpenFOAM & Unity
+├── terraform/           # Infra-as-Code for AWS, GCP, Azure
+├── docker-compose.yml   # Full stack deployment orchestrator
 ├── README.md
 └── requirements.txt
 ```
 
+---
+
 ## Cloud Deployment (AWS/GCP/Azure)
 
 ### Prerequisites
-- [Terraform](https://www.terraform.io/downloads.html) installed
-- Cloud CLI (aws/gcloud/az) configured with credentials
-- Docker and Docker Compose installed
 
-### AWS
-1. Edit `terraform/aws/main.tf` and set `ami_id` and `s3_bucket` variables.
-2. Run:
-   ```bash
-   cd terraform/aws
-   terraform init
-   terraform apply
-   ```
-3. Access the backend via the EC2 public IP.
+* Terraform installed
+* Cloud CLI (AWS/GCP/Azure) configured
+* Docker & Docker Compose
+* Environment variables from `.env.example`
 
-### GCP
-1. Edit `terraform/gcp/main.tf` and set `project_id`, `image`, and `gcs_bucket` variables.
-2. Run:
-   ```bash
-   cd terraform/gcp
-   terraform init
-   terraform apply
-   ```
-3. Access the backend via the VM external IP.
+### Deployment Instructions
 
-### Azure
-1. Edit `terraform/azure/main.tf` and set `storage_account_name` variable.
-2. Run:
-   ```bash
-   cd terraform/azure
-   terraform init
-   terraform apply
-   ```
-3. Access the backend via the VM public IP.
+#### **AWS**
+
+```bash
+cd terraform/aws
+terraform init
+terraform apply
+```
+
+#### **GCP**
+
+```bash
+cd terraform/gcp
+terraform init
+terraform apply
+```
+
+#### **Azure**
+
+```bash
+cd terraform/azure
+terraform init
+terraform apply
+```
+
+> After provisioning, access the backend dashboard via the public VM IP of the respective cloud provider.
 
 ---
-For cloud uploads, set the appropriate environment variables (see `.env.example`).
-For detailed module instructions, see the respective READMEs in each folder. 
+
+## Research & Extensibility
+
+IndiMorph is built as a research-grade, modular platform with extensibility in mind. Researchers can:
+
+* Integrate new AI models (e.g., Vision Transformers, diffusion-based CAD generation)
+* Expand the morph logic to support new mission modes or hardware configurations
+* Deploy on alternative edge devices or integrate with managed ML services
+* Extend the Unity digital twin with reinforcement learning agents or multi-agent simulations
+* Upgrade the security layer with OAuth2, mTLS, or zero-trust models
+
+---
+
+## Example Use Cases
+
+* **Autonomous Terrain-Adaptive Vehicle** for defense logistics
+* **Disaster Response Bot** with search-and-rescue morphology modes
+* **Research Platform** for CFD-aided morphing and terrain-AI co-design
+* **Edge-AI Deployment Benchmark** on resource-constrained devices like Jetson Nano
+
+---
+
+## Acknowledgments
+
+This project integrates work across AI, robotics, and embedded systems. For detailed module-level architecture and implementation, please refer to the `/docs` directory and associated READMEs.
