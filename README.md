@@ -22,7 +22,7 @@ Modern mobility platforms are often rigid and fail to adapt dynamically to unpre
 * **Telemetry & Health Monitoring:** Real-time logging with anomaly detection using LSTM models.
 * **Secure Remote Operation:** Flask/FastAPI backend with JWT auth, Prometheus metrics, and React-based UI dashboards.
 
-<img src="Image/" alt="IndiMorph" />
+<img src="Image/Recording 2025-07-28 183848.gif" alt="IndiMorph" />
 
 
 ## Tech Stack
