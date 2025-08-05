@@ -10,6 +10,7 @@
 
 Modern mobility platforms are often rigid and fail to adapt dynamically to unpredictable terrain or mission demands. **IndiMorph solves this by enabling vehicles to intelligently morph their shape and behavior in real-time**, guided by onboard sensors and AI inference pipelines. This allows for terrain-specific optimization, rapid response, and operational resilience.
 
+[![DOI](https://zenodo.org/badge/DOI/10.36227/techrxiv.175432935.51798519.svg)](https://doi.org/10.36227/techrxiv.175432935.51798519/v1)
 
 
 ## Key Features
